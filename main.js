@@ -1,4 +1,3 @@
-
 // Toggle nav on mobile
 document.getElementById("menu-toggle").addEventListener("click", function () {
   document.getElementById("nav-links").classList.toggle("show");
@@ -11,6 +10,7 @@ document.querySelectorAll(".nav-link").forEach(link => {
   }
 });
 
+// Handle form submission
 document.getElementById("growvyForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -25,24 +25,50 @@ document.getElementById("growvyForm").addEventListener("submit", function (e) {
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: formData.toString()
   })
-  .then(res => res.text())
-  .then(response => {
-    // Hide the form
-    document.getElementById("growvyForm").style.display = "none";
-
-    // Show success section
-    document.getElementById("success-section").style.display = "block";
-  })
-  .catch(error => {
-    alert("Error! Please try again.");
-    console.error(error);
-  });
+    .then(res => res.text())
+    .then(response => {
+      document.getElementById("growvyForm").style.display = "none";
+      document.getElementById("success-section").style.display = "block";
+    })
+    .catch(error => {
+      alert("Error! Please try again.");
+      console.error(error);
+    });
 });
 
+// Slider functionality
+document.addEventListener('DOMContentLoaded', function () {
+  const slides = document.querySelector('.slider');
+  const dots = document.querySelectorAll('.dot');
+  let slideIndex = 0;
 
+  if (!slides || dots.length === 0) {
+    console.error('Slider initialization failed: .slider or .dot elements not found');
+    return;
+  }
 
+  function currentSlide(n) {
+    if (n >= 0 && n < dots.length) {
+      slideIndex = n;
+      updateSlider();
+    }
+  }
 
+  function updateSlider() {
+    slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === slideIndex);
+    });
+  }
 
+  // Initialize the slider
+  updateSlider();
 
-
-
+  // Add click event listeners to dots
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      console.log(`Dot ${index} clicked`); // Debugging log
+      currentSlide(index);
+    });
+  });
+});
