@@ -1350,26 +1350,45 @@ header {
 
 .clients-logos {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  /* Changed from center to space-between to spread images across the container */
   align-items: center;
-  flex-wrap: wrap;
-  gap: 2rem;
+  flex-wrap: nowrap;
+  /* Changed from wrap to nowrap to prevent wrapping */
+  gap: .3rem;
+  /* Reduced gap to ensure images fit comfortably */
+  max-width: 1200px;
+  /* Added max-width to constrain the container */
+  margin: 0 auto;
+  /* Center the container */
+  padding: 0 1rem;
+  /* Added padding for better spacing on smaller screens */
 }
 
 .clients-logos img {
-  max-height: 80px;
-  max-width: 100px;
+  max-height: 120px;
+  /* Increased from 80px to make images larger */
+  max-width: 150px;
+  /* Increased from 100px to make images larger */
   object-fit: contain;
 }
 
+/* Update the responsive styles for .clients-logos img in the media queries */
 @media (max-width: 768px) {
-  .clients-section h2 {
-    font-size: 1.7rem;
-  }
-
   .clients-logos img {
-    max-height: 70px;
-    max-width: 90px;
+    max-height: 100px;
+    /* Increased from 70px */
+    max-width: 130px;
+    /* Increased from 90px */
+  }
+}
+
+@media (max-width: 480px) {
+  .clients-logos img {
+    max-height: 80px;
+    /* Increased from 60px */
+    max-width: 100px;
+    /* Increased from 80px */
   }
 }
 
@@ -1402,6 +1421,12 @@ header {
 .community-content {
   max-width: 800px;
   margin: 0 auto;
+  display: flex;
+  /* Add flexbox to the container */
+  flex-direction: column;
+  /* Stack items vertically */
+  align-items: center;
+  /* Center items horizontally */
 }
 
 .community-img {
@@ -1428,11 +1453,13 @@ header {
 
 .join-community h2 {
   text-align: left;
-  font-size: 2rem;
+  font-size: 2.8rem;
+  /* Adjusted from 2.9rem to encourage wrapping */
   font-weight: 700;
   color: var(--text-color-primary);
   margin-bottom: 1rem;
-  line-height: 1.4;
+  line-height: 1.2;
+  /* Adjusted to ensure text wraps naturally */
 }
 
 .join-community .highlight {
@@ -1461,8 +1488,10 @@ header {
   font-weight: 700;
   text-decoration: none;
   display: inline-block;
+  /* Revert to inline-block to maintain original button size */
   transition: background-color 0.3s ease;
-  margin-left: 0;
+  text-align: center;
+  /* Ensure text inside the button is centered */
 }
 
 .btn-signin:hover {
@@ -1471,7 +1500,7 @@ header {
 
 @media (max-width: 768px) {
   .join-community h2 {
-    font-size: 1.7rem;
+    font-size: 2.2rem;
   }
 
   .join-community p {
@@ -1483,13 +1512,14 @@ header {
   }
 
   .btn-signin {
-    margin-left: 0;
+    font-size: 0.95rem;
+    padding: 0.6rem 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .join-community h2 {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
   }
 
   .join-community p {
