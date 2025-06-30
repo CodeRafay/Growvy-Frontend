@@ -1149,28 +1149,36 @@ header {
 }
 
 .recruitment .card-wrapper {
+  border: 10px solid transparent;
+  /* Define a 10px transparent border for the gradient */
+  background: linear-gradient(white, white) padding-box, linear-gradient(to right, rgb(34, 82, 84), rgb(143, 173, 31), rgb(173, 190, 57), rgb(213, 214, 93)) border-box;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
   border-radius: 30px;
-  background: linear-gradient(to right, rgb(34, 82, 84), rgb(143, 173, 31), rgb(173, 190, 57), rgb(213, 214, 93));
   display: flex;
   flex: 0 0 320px;
   max-width: 320px;
   padding: 0;
-  /* Remove padding to show the gradient border */
+  /* Remove padding since border handles gradient */
+  box-sizing: border-box;
+  /* Ensure border is included in width calculations */
 }
 
 .recruitment .card {
   background: white;
   border-radius: 25px;
   padding: 20px;
-  width: calc(100% - 10px);
-  /* Slightly smaller to show the gradient */
-  margin: 5px;
-  /* This creates space to show the gradient */
+  width: 100%;
+  /* Full width within the wrapper, respecting the border */
+  margin: 0;
+  /* No margin needed since border provides the gradient */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 520px;
   text-align: left;
+  box-sizing: border-box;
+  /* Ensure padding is included in width */
 }
 
 .recruitment .card h3 {
