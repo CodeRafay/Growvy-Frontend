@@ -32,34 +32,32 @@ header {
   padding: 20px 0;
 }
 
-/* Logo */
-.logo {
-  color: var(--text-color-primary);
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-
 /* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .nav-link {
   color: var(--text-color-primary) !important;
-  text-decoration: none;
+  text-decoration: underline;
   font-size: 1.2rem;
-  position: relative;
-  transition: color 0.3s ease, transform 0.3s ease;
+  padding: 12px 25px;
+  border-radius: 40px;
+  transition: all 0.3s ease;
+  font-weight: 500;
 }
 
 .nav-link:hover {
+  background: #f0f0f0;
   font-weight: bolder;
   color: #000000 !important;
   text-decoration: none;
-  /* Remove underline on hover */
   transform: scale(1.05);
 }
 
@@ -79,7 +77,7 @@ header {
     display: block;
   }
 
-  .nav-links {
+  .nav-pills {
     display: none;
     flex-direction: column;
     width: 100%;
@@ -89,9 +87,11 @@ header {
     opacity: 0;
     transform: translateY(-20px);
     pointer-events: none;
+    border: none;
+    /* Remove border in mobile view for cleaner look */
   }
 
-  .nav-links.show {
+  .nav-pills.show {
     display: flex;
     opacity: 1;
     transform: translateY(0);
@@ -99,17 +99,21 @@ header {
     animation: fadeSlideIn 0.4s ease forwards;
   }
 
-  .nav-links li {
+  .nav-pills span {
     margin: 0.5rem 0;
   }
 
   .nav-link {
     color: var(--text-color-primary) !important;
     text-decoration: none;
-    /* Remove underline in mobile view */
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-link:hover {
+    background: none;
+    transform: none;
   }
 }
-
 
 /* Animations */
 @keyframes fadeSlideIn {
@@ -139,19 +143,6 @@ header {
   gap: 5px;
 }
 
-.nav-pills a {
-  text-decoration: underline;
-  color: #000000;
-  padding: 12px 25px;
-  border-radius: 40px;
-  transition: all 0.3s ease;
-  font-weight: 500;
-  font-size: 16px;
-}
-
-.nav-pills a:hover {
-  background: #f0f0f0;
-}
 
 /* Hero Section */
 .hero-section {
@@ -1788,3 +1779,473 @@ h3 {
     width: 14px;
   }
 }
+
+/* --- RESPONSIVE IMPROVEMENTS FOR FULLY FLUID LAYOUT --- */
+
+/* 1. Make all images and containers fluid by default */
+img,
+.user-image img,
+.container-image img,
+.footer-right img,
+.services-cards .card img,
+.community-img,
+.clients-logos img,
+.avatar img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* 2. Remove horizontal scroll on mobile */
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* 3. Make .container, .container-content, .footer-grid, .card, .card-wrapper, .job-card, .slider-container, .clients-logos, .recruitment .card-wrapper, .recruitment .card, .services-cards .card, .community-content, .about-content, .privacy-container, .contact-container, .join1, .join2, .join-community, .success-header, .jobs-header, .pricing-header, .services-header, .slider .card {
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+/* 4. Responsive images in inline HTML (override inline styles) */
+.user-image img,
+.container-image img,
+.footer-right img {
+  max-width: 90vw !important;
+  height: auto !important;
+}
+
+/* 5. Responsive buttons and links */
+.btn,
+.user-btn,
+.start-today-btn,
+.signin-btn,
+.plans-btn,
+.apply-btn,
+.btn-main,
+.start-btn,
+.btn-signin {
+  min-width: 0;
+  width: auto;
+  max-width: 100vw;
+  box-sizing: border-box;
+  font-size: 1rem;
+  padding-left: 1.2em;
+  padding-right: 1.2em;
+}
+
+@media (max-width: 1024px) {
+  .footer-left h2 {
+    font-size: 2.5rem;
+  }
+
+  .community-title,
+  .user-title,
+  .services-header h1,
+  .pricing-header h1,
+  .success-header h1,
+  .jobs-header h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .container,
+  .about-content,
+  .privacy-container,
+  .contact-container,
+  .join1,
+  .join2,
+  .join-community,
+  .slider-container {
+    padding: 1rem;
+    max-width: 100vw;
+  }
+
+  .container-content,
+  .footer-grid,
+  .card-container,
+  .services-cards,
+  .clients-logos {
+    flex-direction: column !important;
+    gap: 1.2rem !important;
+    max-width: 100vw;
+  }
+
+  .user-card,
+  .user-card.reverse,
+  .job-card,
+  .card,
+  .card-wrapper,
+  .recruitment .card-wrapper,
+  .recruitment .card,
+  .services-cards .card,
+  .slider .card {
+    max-width: 100vw !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .user-image img,
+  .container-image img,
+  .footer-right img {
+    max-width: 95vw !important;
+    height: auto !important;
+  }
+
+  .clients-logos img,
+  .services-cards .card img,
+  .community-img,
+  .avatar img {
+    max-width: 80vw !important;
+    height: auto !important;
+  }
+
+  .footer-left h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .container,
+  .about-content,
+  .privacy-container,
+  .contact-container,
+  .join1,
+  .join2,
+  .join-community,
+  .slider-container {
+    padding: 0.5rem;
+  }
+
+  .footer-left h2 {
+    font-size: 1.5rem;
+  }
+
+  .community-title,
+  .user-title,
+  .services-header h1,
+  .pricing-header h1,
+  .success-header h1,
+  .jobs-header h1 {
+    font-size: 1.2rem;
+  }
+
+  .btn,
+  .user-btn,
+  .start-today-btn,
+  .signin-btn,
+  .plans-btn,
+  .apply-btn,
+  .btn-main,
+  .start-btn,
+  .btn-signin {
+    font-size: 0.95rem;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .container,
+  .about-content,
+  .privacy-container,
+  .contact-container,
+  .join1,
+  .join2,
+  .join-community,
+  .slider-container {
+    padding: 0.2rem;
+  }
+
+  .footer-left h2 {
+    font-size: 1.1rem;
+  }
+
+  .btn,
+  .user-btn,
+  .start-today-btn,
+  .signin-btn,
+  .plans-btn,
+  .apply-btn,
+  .btn-main,
+  .start-btn,
+  .btn-signin {
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .user-image img,
+  .container-image img,
+  .footer-right img,
+  .clients-logos img,
+  .services-cards .card img,
+  .community-img,
+  .avatar img {
+    max-width: 98vw !important;
+    height: auto !important;
+  }
+}
+
+/* 6. Ensure .container2 .box is fluid on mobile */
+@media (max-width: 768px) {
+  .container2 {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .container2 .box {
+    width: 100%;
+    min-width: 0;
+    max-width: 100vw;
+    font-size: 1rem;
+    padding: 1em 0.5em;
+  }
+}
+
+@media (max-width: 480px) {
+  .container2 {
+    grid-template-columns: 1fr;
+  }
+
+  .container2 .box {
+    width: 100%;
+    min-width: 0;
+    max-width: 100vw;
+    font-size: 0.95rem;
+    padding: 0.8em 0.3em;
+  }
+}
+
+/* 7. Remove min-widths and max-widths for cards and wrappers on small screens */
+@media (max-width: 600px) {
+
+  .card,
+  .card-wrapper,
+  .recruitment .card-wrapper,
+  .recruitment .card,
+  .services-cards .card,
+  .slider .card {
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+  }
+}
+
+/* 8. Make .slider .card and .team-card fully fluid on mobile */
+@media (max-width: 480px) {
+
+  .slider .card,
+  .team-card {
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+    padding: 1em 0.2em !important;
+  }
+}
+
+/* --- END RESPONSIVE IMPROVEMENTS --- */
+
+/* --- FIX: Restore .services-cards .card img alignment --- */
+.services-cards .card {
+  position: relative;
+}
+
+.services-cards .card img {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 120px;
+  height: auto;
+  z-index: 1;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .services-cards .card img {
+    max-width: 80px;
+    top: -40px;
+  }
+}
+
+/* --- FIX: Center .recruitment .header img above h2 --- */
+.recruitment .header {
+  text-align: center;
+}
+
+.recruitment .header img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  max-width: 120px;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .recruitment .header img {
+    max-width: 80px;
+  }
+}
+
+/* --- NAVBAR CENTERING & MOBILE DROPDOWN FIXES --- */
+
+/* 1. Center navbar on desktop */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+}
+
+/* 2. Hamburger menu for mobile/tablet */
+#menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-color-primary);
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1001;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    justify-content: flex-start;
+    padding-right: 0;
+  }
+
+  .nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-pills {
+    display: none;
+    flex-direction: column;
+    width: 100vw;
+    max-width: 100vw;
+    text-align: center;
+    background: #fff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-radius: 0 0 16px 16px;
+    padding: 1rem 0;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  .nav-pills.show {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .nav-pills span,
+  .nav-pills a {
+    display: block;
+    margin: 0.5rem 0;
+    padding: 0.8em 0;
+    font-size: 1.1rem;
+    width: 100%;
+  }
+
+  #menu-toggle {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-pills {
+    padding: 0.5rem 0;
+  }
+
+  .nav-pills span,
+  .nav-pills a {
+    font-size: 1rem;
+    padding: 0.7em 0;
+  }
+}
+
+/* --- END NAVBAR FIXES --- */
+
+/* --- NAVBAR SIZE & VERTICAL POSITION STANDARDIZATION --- */
+
+.header {
+  background-color: #ffffff;
+  padding: 32px 0 20px 0;
+  /* Move navbar slightly down (was 20px 0) */
+}
+
+.navbar {
+  min-height: 64px;
+  padding-top: 0;
+  padding-bottom: 0;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.nav-pills {
+  min-height: 44px;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  padding: 12px 25px;
+  border-radius: 40px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 16px 0 10px 0;
+  }
+
+  .navbar {
+    min-height: 48px;
+  }
+
+  .nav-pills {
+    min-height: 0;
+  }
+}
+
+/* --- END NAVBAR SIZE & POSITION FIX --- */

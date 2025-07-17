@@ -15,14 +15,19 @@
   <!-- Header -->
   <header class="header">
     <div class="container">
-      <div class="nav-container">
-        <nav class="nav-pills">
-          <a href="index.html" class="nav-link">Home</a>
-          <a href="jobs.html" class="nav-link">Jobs</a>
-          <a href="success.html" class="nav-link">Success</a>
-          <a href="services.html" class="nav-link">Services</a>
-          <a href="pricing.html" class="nav-link">Pricing</a>
-        </nav>
+      <div class="navbar">
+        <div class="nav-container">
+          <nav class="nav-pills">
+            <span><a href="index.html" class="nav-link">Home</a></span>
+            <span><a href="jobs.html" class="nav-link">Jobs</a></span>
+            <span><a href="success.html" class="nav-link">Success</a></span>
+            <span><a href="services.html" class="nav-link">Services</a></span>
+            <span><a href="pricing.html" class="nav-link">Pricing</a></span>
+          </nav>
+        </div>
+        <button id="menu-toggle" aria-label="Toggle Menu">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </div>
   </header>
@@ -272,6 +277,15 @@
             block: 'start'
           });
         }
+      });
+    });
+
+    //hamburger menu toggle
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuToggle = document.getElementById("menu-toggle");
+      const navLinks = document.querySelector(".nav-pills");
+      menuToggle.addEventListener("click", function () {
+        navLinks.classList.toggle("show");
       });
     });
   </script>
